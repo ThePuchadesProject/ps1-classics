@@ -1,5 +1,12 @@
-export default function Game({ game, addToCart }) {
-  const { id, name, image, description, price } = game;
+import type { Game } from "../types";
+
+type GameProps = {
+  game: Game;
+  addToCart: (item: Game) => void;
+};
+
+export default function Game({ game, addToCart }: GameProps) {
+  const { name, image, description, price } = game;
 
   return (
     <div className="col-md-6 col-lg-4 my-4 row align-items-center">

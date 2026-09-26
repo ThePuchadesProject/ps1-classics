@@ -1,4 +1,6 @@
-export const db = [
+import type { Game } from "../types";
+
+export const db: Game[] = [
   {
     id: 1,
     name: "Final Fantasy VII",

@@ -1,3 +1,15 @@
+import type { CartItem, Game } from "../types";
+
+type HeaderProps = {
+  cart: CartItem[];
+  removeFromCart: (id: Game["id"]) => void;
+  increaseQuantity: (id: Game["id"]) => void;
+  decreaseQuantity: (id: Game["id"]) => void;
+  clearCart: () => void;
+  isEmpty: boolean;
+  cartTotal: number;
+};
+
 export default function Header({
   cart,
   removeFromCart,
@@ -6,7 +18,7 @@ export default function Header({
   clearCart,
   isEmpty,
   cartTotal,
-}) {
+}: HeaderProps) {
   return (
     <header className="py-5 header">
       <div className="container-xl">

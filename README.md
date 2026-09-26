@@ -30,9 +30,10 @@ Demo: [ps1classics.thepuchadesproject.com](https://ps1classics.thepuchadesprojec
 
 Since this is a learning project, I plan to improve it over time:
 
-- Move the project from JavaScript to TypeScript.
-- Organize the logic better using custom hooks.
-- Add a search input or a filter by genre.
+- [x] Move the project from JavaScript to TypeScript.
+- [x] Organize the logic better using custom hooks.
+- [ ] Add a search input or a filter by genre.
+
 
 ### How to run it locally
 
@@ -80,9 +81,10 @@ Demo: [ps1classics.thepuchadesproject.com](https://ps1classics.thepuchadesprojec
 
 Al ser un proyecto para aprender, tengo pensado ir mejorándolo con el tiempo:
 
-- Pasar el proyecto de JavaScript a TypeScript.
-- Ordenar mejor la lógica usando custom hooks.
-- Añadir un buscador o filtros por género.
+- [x] Pasar el proyecto de JavaScript a TypeScript.
+- [x] Ordenar mejor la lógica usando custom hooks.
+- [ ] Añadir un buscador o filtros por género.
+
 
 ### Cómo ejecutarlo en local
 
