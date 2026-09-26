@@ -39,7 +39,7 @@
   background-color: white;
   padding: 12px;
   height: fit-content;
-  min-width: 380px;
+  min-width: 435px;
   width: fit-content;
   top: 100%;
   right: 0;
@@ -77,7 +77,9 @@
   border-radius: 4px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.22);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .col-4 > img.img-fluid:hover,

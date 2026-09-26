@@ -1,74 +1,20 @@
-import { useState, useEffect } from "react";
 import Game from "./components/Game";
 import Header from "./components/Header";
-import { db } from "./data/db";
+
+import { useCart } from "./hooks/useCart";
+
 export default function App() {
-  const initialCart = () => {
-    const localStorageCart = localStorage.getItem("cart");
-    return localStorageCart ? JSON.parse(localStorageCart) : [];
-  };
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    setData(db);
-  });
-  const [cart, setCart] = useState(initialCart);
-
-  const MAX_ITEMS = 5;
-  const MIN_ITEMS = 1;
-
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
-
-  function addToCart(item) {
-    const itemExists = cart.findIndex((game) => game.id === item.id);
-    if (itemExists >= 0) {
-      // existe en el carrito
-      if (cart[itemExists].quantity >= MAX_ITEMS) return;
-      const updatedCart = [...cart];
-      updatedCart[itemExists].quantity++;
-      setCart(updatedCart);
-    } else {
-      item.quantity = 1;
-      setCart([...cart, item]);
-    }
-
-    saveLocalStorage();
-  }
-
-  function removeFromCart(id) {
-    setCart((prevCart) => prevCart.filter((game) => game.id !== id));
-  }
-
-  function increaseQuantity(id) {
-    const updatedCart = cart.map((item) => {
-      if (item.id === id && item.quantity < MAX_ITEMS) {
-        return {
-          ...item,
-          quantity: item.quantity + 1,
-        };
-      }
-      return item;
-    });
-    setCart(updatedCart);
-  }
-
-  function decreaseQuantity(id) {
-    const decreasedCart = cart.map((item) => {
-      if (item.id === id && item.quantity > MIN_ITEMS) {
-        return {
-          ...item,
-          quantity: item.quantity - 1,
-        };
-      }
-      return item;
-    });
-    setCart(decreasedCart);
-  }
-
-  function clearCart() {
-    setCart([]);
-  }
+  const {
+    data,
+    cart,
+    addToCart,
+    removeFromCart,
+    decreaseQuantity,
+    increaseQuantity,
+    clearCart,
+    isEmpty,
+    cartTotal,
+  } = useCart();
 
   return (
     <>
@@ -78,6 +24,8 @@ export default function App() {
         increaseQuantity={increaseQuantity}
         decreaseQuantity={decreaseQuantity}
         clearCart={clearCart}
+        isEmpty={isEmpty}
+        cartTotal={cartTotal}
       />
 
       <main className="container-xl mt-5">
@@ -85,12 +33,7 @@ export default function App() {
 
         <div className="row mt-5">
           {data.map((game) => (
-            <Game
-              key={game.id}
-              game={game}
-              setCart={setCart}
-              addToCart={addToCart}
-            />
+            <Game key={game.id} game={game} addToCart={addToCart} />
           ))}
         </div>
       </main>
@@ -104,7 +47,19 @@ export default function App() {
             PS1 Classics Store
           </p>
           <p className="text-white-50 mb-3 fs-6">
-            Retro gaming showcase built with React &amp; Vite
+            Retro gaming showcase built with React &amp; Vite,
+            <span>
+              {" "}
+              made by{" "}
+              <a
+                href="https://thepuchadesproject.com/"
+                target="_blank"
+                rel="noreferrer"
+                className="text-white text-decoration-underline"
+              >
+                The Puchades Project
+              </a>
+            </span>
           </p>
           <div className="d-flex justify-content-center align-items-center gap-3 text-white-50 fs-6 flex-wrap mb-3">
             <span>
@@ -118,7 +73,7 @@ export default function App() {
                 Goh_billy
               </a>
             </span>
-            <span>•</span>
+            <span> || </span>
             <span>
               Controller Art by{" "}
               <a
