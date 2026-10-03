@@ -32,7 +32,8 @@ Since this is a learning project, I plan to improve it over time:
 
 - [x] Move the project from JavaScript to TypeScript.
 - [x] Organize the logic better using custom hooks.
-- [ ] Add a search input or a filter by genre.
+- [x] Migrate state management from useState to useReducer.
+- [x] Add a search input.
 
 
 ### How to run it locally
@@ -83,7 +84,8 @@ Al ser un proyecto para aprender, tengo pensado ir mejorándolo con el tiempo:
 
 - [x] Pasar el proyecto de JavaScript a TypeScript.
 - [x] Ordenar mejor la lógica usando custom hooks.
-- [ ] Añadir un buscador o filtros por género.
+- [x] Migrar la gestión del estado de useState a useReducer.
+- [x] Añadir un buscador.
 
 
 ### Cómo ejecutarlo en local

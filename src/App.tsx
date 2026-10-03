@@ -1,40 +1,67 @@
+import { useEffect, useReducer, useState, useMemo } from "react";
 import Game from "./components/Game";
 import Header from "./components/Header";
-
-import { useCart } from "./hooks/useCart";
+import { cartReducer, initialState } from "./reducers/cart-reducer";
 
 export default function App() {
-  const {
-    data,
-    cart,
-    addToCart,
-    removeFromCart,
-    decreaseQuantity,
-    increaseQuantity,
-    clearCart,
-    isEmpty,
-    cartTotal,
-  } = useCart();
+  // Reducer para controlar el carrito
+  const [state, dispatch] = useReducer(cartReducer, initialState);
+
+  // Estado local para el buscador
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // Guardado automático del carrito en localStorage
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(state.cart));
+  }, [state.cart]);
+
+  // Manejador de cambio del input de búsqueda
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  };
+
+  // Función para vaciar la barra de búsqueda
+  const handleClearSearch = () => {
+    setSearchTerm("");
+  };
+
+  // Filtro los juegos según el texto buscado
+  // Uso useMemo para evitar renderizados innecesarios
+  const filteredGames = useMemo(() => {
+    const term = searchTerm.toLowerCase();
+    return state.data.filter((game) => game.name.toLowerCase().includes(term));
+  }, [state.data, searchTerm]);
 
   return (
     <>
-      <Header
-        cart={cart}
-        removeFromCart={removeFromCart}
-        increaseQuantity={increaseQuantity}
-        decreaseQuantity={decreaseQuantity}
-        clearCart={clearCart}
-        isEmpty={isEmpty}
-        cartTotal={cartTotal}
-      />
+      <Header cart={state.cart} dispatch={dispatch} />
 
       <main className="container-xl mt-5">
         <h2 className="text-center">Our PS1 Collection</h2>
 
+        <div className="search-container mt-4">
+          <input
+            type="text"
+            className="search-input"
+            placeholder="Search game by name..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+          {searchTerm && (
+            <button className="btn btn-dark" onClick={handleClearSearch}>
+              X
+            </button>
+          )}
+        </div>
+
         <div className="row mt-5">
-          {data.map((game) => (
-            <Game key={game.id} game={game} addToCart={addToCart} />
-          ))}
+          {filteredGames.length > 0 ? (
+            filteredGames.map((game) => (
+              <Game key={game.id} game={game} dispatch={dispatch} />
+            ))
+          ) : (
+            <p className="text-center fs-4">No games found matching "{searchTerm}"</p>
+          )}
         </div>
       </main>
 

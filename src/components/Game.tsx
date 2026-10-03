@@ -1,11 +1,12 @@
+import type { CartActions } from "../reducers/cart-reducer";
 import type { Game } from "../types";
-
+import type { ActionDispatch } from "react";
 type GameProps = {
   game: Game;
-  addToCart: (item: Game) => void;
+  dispatch: ActionDispatch<[action: CartActions]>;
 };
 
-export default function Game({ game, addToCart }: GameProps) {
+export default function Game({ game, dispatch }: GameProps) {
   const { name, image, description, price } = game;
 
   return (
@@ -24,7 +25,9 @@ export default function Game({ game, addToCart }: GameProps) {
         <button
           type="button"
           className="btn btn-dark w-100"
-          onClick={() => addToCart(game)}
+          onClick={() =>
+            dispatch({ type: "add-to-cart", payload: { item: game } })
+          }
         >
           Add to Cart
         </button>
