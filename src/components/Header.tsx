@@ -66,12 +66,14 @@ export default function Header({ cart, dispatch }: HeaderProps) {
                                 alt={`${game.name} cover`}
                               />
                             </td>
-                            <td>{game.name}</td>
-                            <td className="fw-bold">{game.price} €</td>
+                            <td className="td-name-size">{game.name}</td>
+                            <td className="fw-bold td-price-size">
+                              {game.price} €
+                            </td>
                             <td className="flex align-items-start gap-4">
                               <button
                                 type="button"
-                                className="btn btn-dark"
+                                className="btn btn-dark td-button-size"
                                 onClick={() =>
                                   dispatch({
                                     type: "decreaseQuantity",
@@ -84,7 +86,7 @@ export default function Header({ cart, dispatch }: HeaderProps) {
                               {game.quantity}
                               <button
                                 type="button"
-                                className="btn btn-dark"
+                                className="btn btn-dark td-button-size"
                                 onClick={() =>
                                   dispatch({
                                     type: "increaseQuantity",

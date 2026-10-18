@@ -1,95 +1,4 @@
 @charset "UTF-8";
-.fw-black {
-  font-weight: 900;
-}
-
-.btn-dark {
-  text-transform: uppercase;
-  font-family: "Chakra Petch", "Outfit", sans-serif;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  background-color: #191b22;
-  border-color: #191b22;
-  transition: all 0.2s ease-in-out;
-}
-
-.btn-dark:hover {
-  background-color: #0070d1;
-  border-color: #0070d1;
-}
-
-.carrito {
-  background-color: transparent;
-  border: none;
-  max-width: 2rem;
-  position: relative;
-  z-index: 100;
-}
-
-.carrito #carrito {
-  display: none;
-  position: absolute;
-  box-shadow: 0px 10px 20px -3px rgba(0, 0, 0, 0.25);
-  border-radius: 6px;
-  border: 1px solid #d1d5db;
-}
-
-.carrito:hover #carrito {
-  display: block;
-  background-color: white;
-  padding: 12px;
-  height: fit-content;
-  min-width: 435px;
-  width: fit-content;
-  top: 100%;
-  right: 0;
-  left: unset;
-  margin-left: unset;
-  margin-right: unset;
-}
-
-#carrito img {
-  width: 48px;
-  height: 48px;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 3px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-}
-
-#carrito .btn-danger {
-  font-size: 10px;
-  border-radius: 50%;
-  padding: 5px 9px;
-}
-
-#carrito .btn-dark {
-  padding: 0 6px;
-  margin: 0 3px;
-}
-
-.game-cover,
-.col-4 > img.img-fluid {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.22);
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.col-4 > img.img-fluid:hover,
-.game-cover:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-.m-0 {
-  margin: 0;
-}
 /*!
  * Bootstrap  v5.2.3 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors
@@ -838,10 +747,118 @@ button:not(:disabled),
   border: 2px solid var(--bs-dark);
   border-radius: 4px;
   outline: none;
-  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition:
+    border-color 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
 }
 
 .search-input:focus {
   border-color: var(--bs-primary);
   box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
+}
+
+.fw-black {
+  font-weight: 900;
+}
+
+.btn-dark {
+  text-transform: uppercase;
+  font-family: "Chakra Petch", "Outfit", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background-color: #191b22;
+  border-color: #191b22;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-dark:hover {
+  background-color: #0070d1;
+  border-color: #0070d1;
+}
+
+.carrito {
+  background-color: transparent;
+  border: none;
+  max-width: 2rem;
+  position: relative;
+  z-index: 100;
+}
+
+.carrito #carrito {
+  display: none;
+  position: absolute;
+  box-shadow: 0px 10px 20px -3px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+}
+
+.carrito:hover #carrito {
+  display: block;
+  background-color: white;
+  padding: 12px;
+  height: fit-content;
+  min-width: 280px;
+  width: fit-content;
+  top: 100%;
+  right: 0;
+  left: unset;
+  margin-left: unset;
+  margin-right: unset;
+}
+
+#carrito img {
+  width: 48px;
+  height: 48px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+#carrito .btn-danger {
+  font-size: 10px;
+  border-radius: 50%;
+  padding: 5px 9px;
+}
+
+#carrito .btn-dark {
+  padding: 0 6px;
+  margin: 0 3px;
+}
+
+.game-cover,
+.col-4 > img.img-fluid {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.22);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.col-4 > img.img-fluid:hover,
+.game-cover:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+.m-0 {
+  margin: 0;
+}
+.td-price-size {
+  font-size: 13px;
+  min-width: 63px;
+}
+.td-name-size {
+  font-size: 15px;
+  max-width: 75px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+.td-button-size {
+  font-size: 15px;
 }
